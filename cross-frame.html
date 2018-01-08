@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<body>
+		<div>我是用来通信的</div>
+		<script>
+			(function() {
+				//父框架提供的可调用的方法
+				var fn = {
+					fathersay: function(obj) {
+						if(top.window.fathersay) {
+							return top.window.fathersay(obj)
+						} 
+					}
+				}
+
+				function crossCall(hashStr) {
+					if(hashStr.indexOf('crossCall') === -1) return
+					var hashObj = (new Function('return ' + hashStr.replace('#crossCall:', '')))()
+					fn[hashObj['fnName']] && fn[hashObj['fnName']](hashObj)
+				}
+
+				//监听hash
+				if(window.hasOwnProperty('onhashchange')) {
+					window.onhashchange = function() {
+						crossCall(location.hash)
+					}
+				} else {
+					(function() {
+						var hash = ''
+						setInterval(function() {
+							var curHash = location.hash
+							if(hash !== curHash) {
+								crossCall(curHash)
+								hash = curHash
+							}
+						}, 1000)
+					}())
+				}	
+
+			})()
+		</script>
+	</body>
+</html>

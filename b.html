@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<body>
+		<div>我是子框架</div>
+		<script src="http://a.com:8158/cross.js"></script>
+		<script>
+			window.onload = function() {
+				//调用父框架的方法
+				crossCall('fathersay', {name: 'igo', text: '回家吃饭好拉'})
+			}
+		</script>
+	</body>
+</html>

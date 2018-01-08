@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<body>
+		<div>我是父框架</div>
+		<iframe id="acom" width="600" height="600" src="http://b.com:8158/cross/b.html"></iframe>
+		<script>
+			window.fathersay = function(obj) {
+				//我这个方法是给子框架调用的
+				alert('来自父框架的调用！\n' +  obj.name + obj.text)
+			}
+		</script>
+	</body>
+</html>
