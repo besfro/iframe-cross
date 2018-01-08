@@ -6,17 +6,16 @@
 
 demo
 ------------
-* 子页面b.com嵌父框架a.com的跨域脚本cross.js
+子页面b.com嵌父框架a.com的跨域脚本cross.js
 
 ```js
 <script src="http://a.com/cross.js"></script>
 ```
 
-* 子页面通过crossCall调用父页面的方法
+子页面通过crossCall调用父页面的方法
 
 ```js
-<script>
 crossCall('fathersay', {name: 'igo', text: '回家吃饭好拉'})
-</script>
+
 ```
 
